@@ -10,26 +10,15 @@
         group
         @change="onTabChanged"
       >
-        <v-btn value="/pages/pkg-size">
-          包体大小
-        </v-btn>
-
-        <v-btn value="center">
-          Center
-        </v-btn>
-
-        <v-btn value="right">
-          Right
-        </v-btn>
-
-        <v-btn value="justify">
-          Justify
-        </v-btn>
+        <v-btn value="/page/pkg-size">包体大小</v-btn>
+        <v-btn value="/page/deps-ana">依赖分析</v-btn>
       </v-btn-toggle>
     </v-app-bar>
 
     <v-main>
+      <v-container fluid>
         <router-view />
+      </v-container>
     </v-main>
 </div>
 </template>

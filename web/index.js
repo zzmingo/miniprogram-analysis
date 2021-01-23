@@ -5,18 +5,19 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import '@mdi/font/css/materialdesignicons.css'
 import Index from './Index.vue'
-import PackageSize from './pages/PackageSize.vue'
+import PkgSize from './pages/PkgSize.vue'
+import DepsAna from './pages/DepsAna.vue'
 
 Vue.use(VueRouter)
 Vue.use(Vuetify)
 Vue.use(VCharts)
 
-const routes = [
-    { path: '/page/pkg-size', component: PackageSize },
-]
 
 const router = new VueRouter({
-    routes
+    routes: [
+        { path: '/page/pkg-size', component: PkgSize },
+        { path: '/page/deps-ana', component: DepsAna }
+    ],
 })
 
 new Vue({
