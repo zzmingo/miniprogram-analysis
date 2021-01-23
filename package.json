@@ -1,0 +1,41 @@
+{
+  "name": "mp-pkg-analysis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "ana": "node lib/index.js",
+    "dev": "parcel web/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zzmingo/mp-pkg-analysis.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zzmingo/mp-pkg-analysis/issues"
+  },
+  "homepage": "https://github.com/zzmingo/mp-pkg-analysis#readme",
+  "dependencies": {
+    "@mdi/font": "^5.9.55",
+    "@vue/component-compiler-utils": "^3.2.0",
+    "cli-progress": "^3.8.2",
+    "colors": "^1.4.0",
+    "dependency-tree": "^8.0.0",
+    "echarts": "^4.9.0",
+    "filesize": "^6.1.0",
+    "fs-extra": "^9.1.0",
+    "glob": "^7.1.6",
+    "ora": "^5.3.0",
+    "parcel-bundler": "^1.12.4",
+    "v-charts": "^1.19.0",
+    "vue": "^2.6.12",
+    "vue-hot-reload-api": "^2.3.4",
+    "vue-router": "^3.4.9",
+    "vue-template-compiler": "^2.6.12",
+    "vuetify": "^2.4.3",
+    "workerpool": "^6.0.4"
+  }
+}
