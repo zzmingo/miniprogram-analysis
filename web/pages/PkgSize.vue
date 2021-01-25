@@ -1,13 +1,14 @@
 <template>
   <div>
-    <v-container class="px-0" fluid>
+    <div class="info">
       <div>总包数：{{ chartData.rows.length }}</div>
       <div>总大小：{{ pkgSize }}</div>
-    </v-container>
+    </div>
     <ve-bar
       :data="chartData"
       :settings="chartSettings"
       :extend="chartExtend"
+      :legend-visible="false"
       height="1000px"
     ></ve-bar>
   </div>
@@ -15,7 +16,7 @@
 
 <script>
 const filesize = require('filesize')
-const data = require("../data");
+const data = require("../data")
 
 export default {
   name: "PkgSize",
@@ -32,17 +33,16 @@ export default {
       dimension: ["名称"],
       metrics: ["包体大小"],
     };
-    this.pkgSize = filesize(Object.keys(data.pkgSizes).map(_ => data.pkgSizes[_].size).reduce((a, b) => a + b))
+    this.pkgSize = filesize(Object.keys(data.pkgSize).map(_ => data.pkgSize[_].size).reduce((a, b) => a + b))
     return {
       chartData: {
         columns: ["名称", "包体大小", "size"],
-        rows: Object.keys(data.pkgSizes)
+        rows: Object.keys(data.pkgSize)
           .map((key) => {
             return {
               名称: key,
-              包体大小: data.pkgSizes[key].size,
-              size: data.pkgSizes[key].size,
-              human: data.pkgSizes[key].human,
+              包体大小: data.pkgSize[key].size,
+              size: data.pkgSize[key].size,
             };
           })
           .sort((a, b) => a.size - b.size),
@@ -52,5 +52,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.info {
+  display: flex;
+  flex-direction: row;
+}
+.info > * {
+  margin: 0 20px 0 20px;
+}
 </style>
