@@ -56,7 +56,7 @@ export default {
             node: data.pageDeps.pkgs[key],
             children: [],
           }
-        }),
+        }).sort((a, b) => b.node.totalSize - a.node.totalSize)
 
       this.loaded = true
     },
