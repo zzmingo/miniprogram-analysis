@@ -10,8 +10,10 @@
         >
           <template #node="{item}">
             <div class="node">
-              <span>{{item.name}}</span>
-              <span class="size">{{ humanSize(item.node.totalSize) }}</span>
+              <span :class="{ recursive: item.node.recursive, cache: item.node.cache }">{{item.name}}</span>
+              <span class="label size">{{ humanSize(item.node.totalSize) }}</span>
+              <span v-if="item.node.recursive" class="label recursive">循环引用</span>
+              <span v-if="item.node.cache" class="label cache">多引用源</span>
             </div>
           </template>
         </tree-item>
@@ -97,11 +99,17 @@ export default {
 <style scoped>
 .node {
   display: inline-block;
+  font-size: 14px;
 }
-.size {
+.label {
   border-radius: 3px;
   background: #eee;
   font-size: 12px;
-  padding: 2px 2px 2px 2px;
+  padding: 2px 4px 2px 4px;
 }
+.label.recursive {
+  background: red;
+  color: white;
+}
+
 </style>
