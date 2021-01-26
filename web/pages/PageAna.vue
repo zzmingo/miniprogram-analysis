@@ -10,6 +10,9 @@
         >
           <template #node="{item}">
             <div class="node">
+              <span v-if="item.root">📦</span>
+              <span v-if="item.node.page">📃</span>
+              <span v-if="item.node.component">🔸</span>
               <span :class="{ recursive: item.node.recursive, cache: item.node.cache }">{{item.name}}</span>
               <span class="label size">{{ humanSize(item.node.totalSize) }}</span>
               <span v-if="item.node.recursive" class="label recursive">循环引用</span>
