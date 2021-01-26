@@ -37,8 +37,10 @@ export default {
   },
   mounted() {
     if (this.prefetch) {
-      this.fetchChildren(this.item)
-      this.updateNode()
+      if (this.item.children.length === 0) {
+        this.fetchChildren(this.item)
+        this.updateNode()
+      }
     }
   },
   methods: {

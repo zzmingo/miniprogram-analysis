@@ -9,14 +9,17 @@
           :fetch-children='fetchChildren'
         >
           <template #node="{item}">
-            <div class="node">
+            <div class="node" :class="{ 'zero-size': item.node.totalSize === 0 }">
               <span v-if="item.root">📦</span>
               <span v-if="item.node.page">📃</span>
               <span v-if="item.node.component">🔸</span>
-              <span :class="{ recursive: item.node.recursive, cache: item.node.cache }">{{item.name}}</span>
+              <span v-if="item.name === 'usingComponents'">⛓️</span>
+              <span class="name" :class="{ recursive: item.node.recursive, cache: item.node.cache }">{{item.name}}</span>
               <span class="label size">{{ humanSize(item.node.totalSize) }}</span>
               <span v-if="item.node.recursive" class="label recursive">循环引用</span>
               <span v-if="item.node.cache" class="label cache">多引用源</span>
+              <span v-if="item.node.mainDep" class="label main">主包</span>
+              <span v-if="item.node.noExists" class="label no-exists">文件不存在</span>
             </div>
           </template>
         </tree-item>
@@ -60,7 +63,6 @@ export default {
             children: [],
           }
         }).sort((a, b) => b.node.totalSize - a.node.totalSize)
-
       this.loaded = true
     },
     fetchChildren(item) {
@@ -91,8 +93,16 @@ export default {
           }
         })
       }
-      item.children.push(...children)
+      item.children = children
       item.children.sort((a, b) => b.node.totalSize - a.node.totalSize)
+
+      if (item.name === 'main') {
+        item.children.unshift({
+          name: 'app.js',
+          node: data.pageDeps.pkgs.main.app,
+          children: [],
+        })
+      }
       return item
     },
   },
@@ -104,6 +114,9 @@ export default {
   display: inline-block;
   font-size: 14px;
 }
+.node.zero-size {
+  color: #999;
+}
 .label {
   border-radius: 3px;
   background: #eee;
@@ -111,6 +124,10 @@ export default {
   padding: 2px 4px 2px 4px;
 }
 .label.recursive {
+  background: red;
+  color: white;
+}
+.label.no-exists {
   background: red;
   color: white;
 }
