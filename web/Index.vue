@@ -19,6 +19,14 @@
       >
         页面分析
       </div>
+      <div
+        class="tab"
+        :class="{ active: '/page/main-ana' === this.tab }"
+        data-route="/page/main-ana"
+        @click="onTabChanged"
+      >
+        主包依赖分析
+      </div>
       <div style="width: 30px"></div>
     </div>
     <div class="content">
