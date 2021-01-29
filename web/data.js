@@ -1,1 +1,1 @@
-module.exports = require('../versions/5.27.12.ana.json')
+module.exports = require('../versions/5.28.6.ana.json')

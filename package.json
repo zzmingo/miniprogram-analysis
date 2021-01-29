@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ana": "node lib/index.js -d ./versions/5.27.12 -p pkg-size page-deps main-ana",
+    "ana": "node lib/index.js -d ./versions/5.28.6 -p pkg-size page-deps main-ana",
     "dev": "parcel web/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -34,7 +34,7 @@ export default {
                 human: filesize(item.size),
                 ...item,
             }
-        }).filter(item => !item.main).filter(item => item.file.indexOf('.js') !== -1).sort((a, b) => b.size - a.size)
+        }).filter(item => item.file.indexOf('.js') !== -1).sort((a, b) => b.size - a.size)
     }
   },
 };
